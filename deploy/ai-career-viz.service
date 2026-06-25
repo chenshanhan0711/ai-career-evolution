@@ -1,0 +1,17 @@
+[Unit]
+Description=AI Career Visualization Streamlit App
+After=network.target
+
+[Service]
+Type=simple
+User=ai-career
+Group=ai-career
+WorkingDirectory=/opt/ai-career-viz
+Environment=APP_DB_PATH=/var/lib/ai-career-viz/ai_career.db
+ExecStart=/opt/ai-career-viz/.venv/bin/streamlit run app.py --server.address 0.0.0.0 --server.port 8501
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+
